@@ -1,0 +1,68 @@
+# ─── Secrets & credentials ────────────────────────────────────────────────────
+.env
+*.env
+.env.*
+**/secrets.*
+**/*token*
+**/*key*
+**/*password*
+**/*credential*
+**/*apikey*
+**/*key*
+
+# ─── Power BI temporaires ──────────────────────────────────────────────────────
+*.pbix.tmp
+*.pbix.bak
+*.DataMashup
+LocalSettings.xml
+*.abf
+
+# ─── Power BI Desktop logs & cache ────────────────────────────────────────────
+**/Microsoft/Power BI Desktop/
+**/AppData/Local/Microsoft/Power BI Desktop/
+**/*.pbitmp
+
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+*.ipynb_checkpoints
+
+# ─── Jupyter ──────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ─── Exports de données brutes ────────────────────────────────────────────────
+*.csv
+*.xlsx
+*.xls
+*.json
+!**/sample_*.json
+!**/sample_*.csv
+
+# ─── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ─── Éditeurs ─────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── Logs ─────────────────────────────────────────────────────────────────────
+*.log
+logs/
