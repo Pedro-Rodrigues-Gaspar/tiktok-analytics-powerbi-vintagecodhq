@@ -9,7 +9,7 @@ Le périmètre du projet couvre :
 - **Nettoyage et transformation** des données pour les rendre exploitables (types, valeurs manquantes, granularité, cohérence des dates)
 - **Modélisation en Star Schema** avec tables de faits et de dimensions
 - **Création d’un dashboard Power BI interactif** pour suivre la performance du compte
-- **Analyse des performances de contenu** (hook, titre, vues moyennes, différents types d’engagement...) et de la croissance de l’audience
+- **Analyse des performances de contenu** (hook, titre CoD (Opus Call of Duty dans la vidéo), vues moyennes, différents types d’engagement...) et de la croissance de l’audience
 
 Les dossiers `assets/` contiennent les **captures d’écran du data model** et des **visuels principaux** du rapport Power BI.  
 Le fichier [`pbix/tiktok_analytics_dashboard.pbix`](pbix/tiktok_analytics_dashboard.pbix) contient le rapport Power BI complet, prêt à être ouvert et exploré dans Power BI Desktop.
@@ -32,10 +32,10 @@ Les principales questions business traitées sont :
 
 - **Performance des contenus (hook & titre)**
   - Quels types de **hooks** (accroches en début de vidéo) performent le mieux en termes de **vues** et d’**engagement** ?
-  - Quels **titres** sont associés aux meilleures vidéos à fort potentiel de performance ?
+  - Quels **titres** (Licence de Call of Duty, exemple : Black Ops 2) sont associés aux meilleures vidéos à fort potentiel de performance ?
 
 - **Stratégies de contenu et engagement**
-  - Quelles **combinaisons de caractéristiques de contenu** (hook, licence de Call of Duty, thématique) maximisent :
+  - Quelles **combinaisons de caractéristiques de contenu** (hook, licence de Call of Duty) maximisent :
     - les **vues**
     - le **taux d’engagement** des vidéos
     - la probabilité de **générer de nouveaux followers** ?
@@ -99,8 +99,8 @@ Le dashboard Power BI est organisé pour répondre aux questions business de man
   - Graphiques en courbes (line chart) et en aires (area chart) comparant le **volume de publication** et la **croissance des vues / followers**
 
 - **Content Strategy Insights**  
-  - Tableau détaillé par vidéo (titre, hook, vues, likes, commentaires, partages, taux d’engagement)  
-  - Bar charts / boxplots pour identifier les **top vidéos** et les **contenus sous-performants**
+  - Tableau détaillé par vidéo (titre CoD, hook, vues, likes, commentaires, partages, taux d’engagement)  
+  - Bar charts verticales et horizontales avec highlights pour identifier les **top vidéos** et les **contenus sous-performants**
 
 - **Hooks, titres et engagement**  
   - Répartition des performances par **type de hook**  
@@ -131,7 +131,7 @@ Voici un aperçu visuel des principaux éléments du rapport Power BI et du mod�
 
 ![Modèle de données Power BI — Star Schema](assets/data_model.png)
 
-*Cette vue montre la structure du modèle Power BI en schéma en étoile : tables de faits (performance vidéo, compte quotidien) au centre et dimensions (Date, Type de contenu, Hook, Titre CoD, Titre) reliées par des relations 1:*. Elle est utile pour comprendre comment les filtres et les mesures s’appliquent entre les tables et pour valider la cohérence du modèle.*
+*Cette vue montre la structure du modèle Power BI en schéma en étoile : tables de faits (Videos (performance des vidéos), Account Daily (performance du compte au quotidien)) au centre et dimensions (Date, Types de Hook, Titres et Licences CoD) reliées par des relations 1:*. Elle est utile pour comprendre comment les filtres et les mesures s’appliquent entre les tables et pour valider la cohérence du modèle.*
 
 ---
 
@@ -168,22 +168,33 @@ Cette section synthétise des **exemples de types d’insights** que le dashboar
 **Outils et technologies utilisés :**
 
 - **Power BI**
-  - Connexion aux fichiers de données exportés depuis TikTok
+  - Connexion aux fichiers de données exportés depuis TikTok (fichiers au format CSV et JSON)
   - Power Query pour le **nettoyage**, la **transformation** et le **chargement** des données
   - Modélisation et création du **Star Schema**
   - Conception des **pages de rapport** et des visualisations
 
 - **DAX (Data Analysis Expressions)**
   - Création de **mesures métier** : vues totales, taux d’engagement, croissance des followers, KPIs dérivés
-  - Calculs temporels (variations, cumuls, comparaisons période à période)
+  - Calculs temporels (cumuls, comparaisons période à période)
   - Logique d’agrégation adaptée aux tables de faits et de dimensions
 
 - **Git**
   - Gestion de versions des fichiers du projet (README, ressources, scripts éventuels)
+  - Création d'une branche feature/figma-bg-update pour inclure la nouvelle version avec le background réalisé sur Figma
+  - Merge de la branche feature/figma-bg-update avec la branche main
   - Organisation du projet comme **portfolio GitHub** pour présenter :
     - la démarche analytique
     - la structure du modèle de données
     - des captures du dashboard Power BI
+
+- **Figma (UX/UI Design du Dashboard)**
+  - Conception UX/UI du dashboard avant implémentation dans Power BI
+  - Création du **background**, des layouts et de la hiérarchie visuelle
+  - Design des **éléments de navigation** et des icônes
+  - Définition et respect de la **charte graphique (brand kit)** :
+    - `#7bb717` (vert)
+    - `#444a4d` (gris foncé / noir)
+  - Optimisation de l’**expérience utilisateur**, de la **lisibilité** et du **data storytelling**
 
 ---
 
@@ -191,10 +202,9 @@ Cette section synthétise des **exemples de types d’insights** que le dashboar
 
 L’analyse repose sur un **volume limité de vidéos**, ce qui peut restreindre la représentativité statistique des résultats et limiter la généralisation des conclusions à d’autres comptes ou périodes.  
 Par ailleurs, **les données issues des lives TikTok ne sont pas incluses** dans le périmètre de ce projet, car elles ne sont pas accessibles via les sources ou outils utilisés ; cela constitue une limite importante puisque ces formats représentent une part significative de l’activité sur la plateforme.  
-De plus, le **volume de vidéos collectées diminue à partir du mois de mars**, ce qui peut introduire un biais temporel dans l’analyse et affecter la comparabilité entre les différentes périodes étudiées.  
+De plus, le **volume de vidéos collectées diminue à partir du mois de mars**, ce qui peut introduire un biais temporel dans l’analyse et affecter la compaabilité entre les différentes périodes étudiées.  
 Ces limitations n’invalident pas l’étude, mais doivent être **explicitement prises en compte lors de l’interprétation des résultats** et de leur transposition à d’autres contextes.
 
 ---
 
 Ce projet illustre une **démarche complète de Data Analytics appliquée à un cas réel de marketing digital (TikTok)**, avec un focus sur la **qualité de la modélisation**, la **rigueur des mesures DAX** et la **capacité à transformer des données brutes en recommandations actionnables** pour un créateur de contenu ou une équipe marketing.
-
